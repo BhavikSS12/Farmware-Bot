@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Farmware-Bot 🌾🤖
 
 > **FPGA-based Autonomous Precision Agriculture Rover & Environmental Monitor**  
