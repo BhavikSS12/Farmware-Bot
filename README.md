@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Farmware-Bot 🌾🤖
 
 > **FPGA-based Autonomous Precision Agriculture Rover & Environmental Monitor**  
@@ -204,3 +205,7 @@ Farmware-Bot/
 ## 🛡️ License
 
 Developed for precision agriculture and hardware-accelerated robotics research.
+=======
+# Farmware-Bot
+FPGA based bot which can solve the maze and can help in farm related works.
+>>>>>>> c11d7fa04a7c3433a0fc747b82716a43943be7bd
