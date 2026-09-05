@@ -5,7 +5,7 @@
 // =============================================================================
 module pwm_generator(
     input  wire        clk_3125KHz,
-    input  wire [3:0]  duty_cycle,
+    input  wire [5:0]  duty_cycle,  // 6-bit: period=64, step=1.5625%
     output reg         clk_195KHz,
     output reg         pwm_signal
 );
@@ -16,7 +16,7 @@ initial begin
 end
 //////////////////DO NOT MAKE ANY CHANGES ABOVE THIS LINE //////////////////
 
-reg [3:0] pwm_counter = 4'd0;
+reg [5:0] pwm_counter = 6'd0;  // 6-bit counter, wraps 63->0
 reg [2:0] clk_counter = 3'd0;
 
 always @(posedge clk_3125KHz) begin
@@ -31,7 +31,7 @@ always @(posedge clk_3125KHz) begin
     else
         pwm_signal <= 1'b0;
 
-    pwm_counter <= pwm_counter + 4'd1;  // wraps 15->0 automatically
+    pwm_counter <= pwm_counter + 6'd1;  // wraps 63->0 automatically
 end
 
 //////////////////DO NOT MAKE ANY CHANGES BELOW THIS LINE //////////////////

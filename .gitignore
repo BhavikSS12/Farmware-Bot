@@ -1,0 +1,82 @@
+# ==============================================================================
+# Intel / Altera Quartus Prime
+# ==============================================================================
+# Compilation & synthesis database directories
+db/
+incremental_db/
+.qsys_edit/
+hps_isw_handoff/
+sys_description/
+
+# Output files, bitstreams, and compilation reports
+output_files/
+*.rpt
+*.summary
+*.smsg
+*.done
+*.jdi
+*.jditmp
+*.pin
+*.sld
+*.sof
+*.pof
+*.jic
+*.rbf
+*.ttf
+*.cdf
+*.map
+
+# Quartus workspace & machine-specific settings
+# Note: Keep .qpf (project) and .qsf (pin assignments & settings)
+*.qws
+*.qdf
+*_assignment_defaults.qdf
+
+# ==============================================================================
+# Simulation (ModelSim / QuestaSim / NativeLink)
+# ==============================================================================
+simulation/
+work/
+transcript
+vsim.wlf
+*.wlf
+*.vstf
+
+# ==============================================================================
+# Backup & Temporary Files
+# ==============================================================================
+*.bak
+*.orig
+*~
+*.tmp
+*.temp
+
+# ==============================================================================
+# Arduino & ESP32 Build Outputs
+# ==============================================================================
+esp32_maze_rover/build/
+*.bin
+*.elf
+*.hex
+
+# ==============================================================================
+# OS & Editor Artifacts
+# ==============================================================================
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDEs & Editors
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+.idea/
+*.sublime-workspace
