@@ -147,14 +147,14 @@ Farmware-Bot/
 │   ├── clk_divider.v            # Parameterizable clock frequency divider
 │   ├── encoder.v                # Dual-channel quadrature encoder decoder
 │   ├── uart_tx.v                # Hardware UART Transmitter (50MHz -> 9600 baud)
-│   ├── uart_rx.v                # Hardware UART Receiver with 2-FF synchronizer
-│   └── tb.v                     # RTL simulation test module
+│   └── uart_rx.v                # Hardware UART Receiver with 2-FF synchronizer
 │
 ├── esp32_maze_rover/            # ESP32 Firmware
 │   └── esp32_maze_rover.ino     # Wi-Fi SoftAP, Web Server, Sensor & UART Controller
 │
 └── tb/                          # Verification Testbenches
-    └── tb_test.v                # Comprehensive testbench for simulation
+    ├── stage_1.v                # Legacy Stage 1 testbench (L298N baseline)
+    └── stage_2.v                # Stage 2 comprehensive testbench (UART, TB6612, IR, FSM)
 ```
 
 ---

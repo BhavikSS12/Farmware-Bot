@@ -7,7 +7,16 @@
 //   ESP32 -> FPGA:  0x01=START, 0x02=STOP, 0x03=RETURN
 //   FPGA -> ESP32:  0xAA=MAZE_DONE, 0xBB=RUNNING, 0xCC=IDLE
 // =============================================================================
-module robo_top_level(
+module robo_top_level #(
+    parameter FRONT_THRESHOLD  = 16'd80,    // 8 cm
+    parameter SIDE_THRESHOLD   = 16'd80,    // 8 cm
+
+    // Hardware timing for 300RPM Geared DC Motor @ 50MHz (override in simulation)
+    parameter TURN_90_CYCLES   = 32'd55_000_000,
+    parameter TURN_180_CYCLES  = 32'd110_000_000,
+    parameter STOP_WAIT_CYCLES = 32'd50_000_000,
+    parameter SENSOR_WARMUP    = 32'd1_500_000
+)(
     input  wire        CLOCK_50,
     input  wire [1:0]  KEY,
     output wire [7:0]  LED,
@@ -44,13 +53,6 @@ module robo_top_level(
 // =============================================================================
 // PARAMETERS
 // =============================================================================
-localparam FRONT_THRESHOLD  = 16'd80;    // 8 cm
-localparam SIDE_THRESHOLD   = 16'd80;    // 8 cm
-
-// Hardware timing for 300RPM Geared DC Motor @ 50MHz
-localparam TURN_90_CYCLES   = 32'd55_000_000;
-localparam TURN_180_CYCLES  = 32'd110_000_000;
-localparam STOP_WAIT_CYCLES = 32'd50_000_000;
 
 // Per-motor speed trim (6-bit PWM, period=64)
 localparam SPEED_FULL_L     = 6'd12;
@@ -281,6 +283,7 @@ motor_controller #(
     .SPEED_FULL_R    (SPEED_FULL_R),
     .SPEED_TURN_L    (SPEED_TURN_L),
     .SPEED_TURN_R    (SPEED_TURN_R),
+    .SENSOR_WARMUP   (SENSOR_WARMUP),
     .IR_ACTIVE_LOW   (0)
 ) u_motor_ctrl(
     .clk             (CLOCK_50),
